@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "667873195752",
+    "project_id": "appmoviltiendas",
+    "storage_bucket": "appmoviltiendas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667873195752:android:34a8e325538eda16227b5d",
+        "android_client_info": {
+          "package_name": "com.example.fluejer3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667873195752-4r7pk6qt26b6ejj738q4igslhkpitd6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpClIH9_XNrW71Cgp2Qq5NxvDZPF1lbt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667873195752-4r7pk6qt26b6ejj738q4igslhkpitd6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
