@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'Opciones.dart';
+
 class RegistrarCliente extends StatefulWidget {
   const RegistrarCliente({Key? key}) : super(key: key);
 
@@ -28,6 +30,18 @@ class _RegistrarClienteState extends State<RegistrarCliente> {
 
       home: Scaffold(
         appBar: AppBar(
+
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>Opciones())
+                );
+
+              }
+          ),
+
           backgroundColor: Colors.orange,
           title: Center( child:Text('Registrar Cliente',style: TextStyle(
               color:Colors.black54

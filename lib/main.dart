@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'ListaCliente.dart';
+import 'Mensaje.dart';
 import 'Opciones.dart';
 import 'CategoriaNegocio.dart';
 import 'RegistrarCliente.dart';
@@ -128,6 +129,34 @@ class _PantallaState extends State<Pantalla> {
                 ),
                 )
             ),
+            Container(
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                style: TextButton.styleFrom(
+                  primary: Colors.red
+                ),
+                child:Text('Mensaje',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+                  onPressed: (){
+                  print ('ahgg HPPPP');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=>Mensaje()),
+                    );
+
+                  },
+              )
+
+            )
+
+
+
+
             //       Container(
     //           padding: EdgeInsets.all(2),
     //alignment: Alignment.center,
@@ -158,6 +187,7 @@ class _PantallaState extends State<Pantalla> {
     //          ),
     //    )
            // )
+
           ]
         ),
       );

@@ -77,7 +77,8 @@ class _ConsultaState extends State<Consulta> {
                     leading: Image.network(data['Imagen'],width: 60,alignment: Alignment.center,),
                     title: Text(data['Nombre']),
                     subtitle: Text('Categoría: '+data['Categoria']+'\n'+
-                        'Precio: '+data['Precio'].toString()+'\n'+
+                        'Precio x Unidad: '+data['Precio'].toString()+'\n'+
+                        'Cantidad: '+data['Cantidad'].toString()+'\n'+
                         'Código Almacén: '+data['Codigo_Almacen'].toString()+'\n'+
                         'Código: '+data['Codigo'].toString()),
                     trailing: Icon(Icons.delete),

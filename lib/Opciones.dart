@@ -1,3 +1,5 @@
+import 'package:fluejer3/Comprar.dart';
+import 'package:fluejer3/RegistrarCliente.dart';
 import 'package:fluejer3/TipoBusquedaNegocio.dart';
 import 'package:fluejer3/ListaProducto.dart';
 import 'package:fluejer3/TipoBusquedaProducto.dart';
@@ -22,8 +24,9 @@ class Opciones extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.orange,
-          title: Center( child:Text('Opciones',style: TextStyle(
-              color:Colors.black54
+          title: Center( child:Text('Menú',style: TextStyle(
+              color:Colors.black54,
+
           ),
           ),
           ),
@@ -52,16 +55,29 @@ class Opciones extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text('Listar Negocio'),
+                title: Text('Registrar Usuario'),
                 //leading: Image.asset('img/6.png'),
-                leading: Icon(Icons.app_registration),
+                leading: Icon(Icons.add_reaction_outlined),
                 onTap: (){
                   Navigator.of(context).pop();
                   Navigator.push(
-                    context, MaterialPageRoute(builder: (context)=>ListaNegocio()),
+                    context, MaterialPageRoute(builder: (context)=>RegistrarCliente()),
+                  );
+                },
+              ),
+
+              ListTile(
+                title: Text('Realizar Comprar'),
+                //leading: Image.asset('img/6.png'),
+                leading: Icon(Icons.add_shopping_cart),
+                onTap: (){
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context, MaterialPageRoute(builder: (context)=>Comprar()),
                   );
                 },
               )
+
             ],
           ),
         ),

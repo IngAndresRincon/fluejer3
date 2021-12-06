@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'Opciones.dart';
 import 'TotalCompra.dart';
 
 
@@ -21,7 +22,20 @@ class _ComprarState extends State<Comprar> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Buscar'),
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>Opciones())
+                );
+
+              }
+          ),
+
+
+
+          title: Text('Busqueda de Negocio'),
         ),
         body: Center(
           child: SizedBox(
@@ -38,7 +52,7 @@ class _ComprarState extends State<Comprar> {
                       });
                     },
                     decoration: InputDecoration(
-                      hintText: 'Buscar '
+                      hintText: 'Buscar'
                     ),
                   ),
                 ),
@@ -88,7 +102,8 @@ final List lista=[];
                         leading: Image.network(data['Imagen'],width: 60,alignment: Alignment.center,),
                         title: Text(data['Nombre']),
                         subtitle: Text('Categoría: '+data['Categoria']+'\n'+
-                            'Precio: '+data['Precio'].toString()+'\n'+
+                            'Precio X Unidad: '+data['Precio'].toString()+'\n'+
+                            'Cantidad: '+data['Cantidad'].toString()+'\n'+
                             'Código Almacén: '+data['Codigo_Almacen'].toString()+'\n'+
                             'Código: '+data['Codigo'].toString()),
                         trailing: Icon(Icons.delete),
@@ -113,8 +128,8 @@ final List lista=[];
         flex: 1,
             child:
           Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.only(bottom: 20),
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(bottom: 10),
             color: Colors.white,
             height: 10,
             alignment: Alignment.center,
@@ -122,15 +137,15 @@ final List lista=[];
               label: Text('Agregar',
               textAlign: TextAlign.center,
               ),
-            icon: Icon(Icons.add_moderator,
+            icon: Icon(Icons.add_shopping_cart_outlined,
             size: 30,
-            color: Colors.deepOrangeAccent),
+            color: Colors.white),
             style: ElevatedButton.styleFrom(
-              primary: Colors.indigo,
+              primary: Colors.teal,
               onPrimary: Colors.white,
               onSurface: Colors.deepPurple,
               elevation: 10,
-              shape: BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)),
+              shape: BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
               textStyle: TextStyle(
                 color: Colors.redAccent,

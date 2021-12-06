@@ -22,6 +22,9 @@ class ListaCompra extends StatefulWidget {
 }
 
 class _ListaCompraState extends State<ListaCompra> {
+  SingingCharacter? _character = SingingCharacter.Domicilio;
+  //final Informacion=TextEditingController();
+  String Info="";
   var total = 0;
   CollectionReference registrarproducto = FirebaseFirestore.instance.collection('Compras');
   @override
@@ -37,26 +40,90 @@ class _ListaCompraState extends State<ListaCompra> {
                 child: ListView.builder(
                     itemCount: widget.lista.length,
                 itemBuilder:(BuildContext context,i){
-                  return Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(5),
+                      final item=widget.lista[i][0];
+                  return Dismissible(
+                      onDismissed: (_)
+                    {
+                      widget.lista.removeAt(i);
 
+                    },
+
+                    key: Key(item),
+                    movementDuration: Duration(milliseconds: 100),
+
+                      // padding: EdgeInsets.all(5),
                               child: ListTile(title: Text(widget.lista[i][0]+"      \$"+widget.lista[i][1]),
-                              tileColor:Colors.orange,
+                              tileColor:Colors.yellow,
                               ),
-                                  ),
+                      background: Container(
+                        color: Colors.blueGrey,
+                      ),
 
 
-                    ],
+
                   );
                     }
                 )
             ),
             Container(
-              padding: EdgeInsets.all(20),
-              color: Color.fromARGB(40, 0, 50, 255),
-              margin: EdgeInsets.only(bottom: 80),
+              child:  Row(
+                children: <Widget>[
+                  Container(
+                    color: Colors.white,
+                    height:60,
+                    width: 180,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: const Text('Recoger'),
+                          leading: Radio<SingingCharacter>(
+                            value: SingingCharacter.Recoger,
+                            groupValue: _character,
+                            onChanged: (SingingCharacter? value) {
+                              setState(() {
+                                _character = value;
+                                Info = value.toString();
+                                Info = Info.substring(17);
+                                print (Info);
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color:Colors.white,
+                        height: 60,
+                    width: 180,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: const Text('Domicilio'),
+                          leading: Radio<SingingCharacter>(
+                            value: SingingCharacter.Domicilio,
+                            groupValue: _character,
+                            onChanged: (SingingCharacter? value) {
+                              setState(() {
+                                _character = value;
+                                Info = value.toString();
+                                Info = Info.substring(17);
+                                print (Info);
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              color: Color.fromARGB(10, 0, 50, 55),
+              margin: EdgeInsets.only(bottom: 10),
               alignment: Alignment.center,
               child: Column(
                 children: [
@@ -66,17 +133,18 @@ class _ListaCompraState extends State<ListaCompra> {
                       return ElevatedButton.icon(
                         label: Text('Total Compra',
                           textAlign: TextAlign.center,),
-                        icon: Icon(Icons.eighteen_mp_outlined,
+                        icon: Icon(Icons.add,
                           size: 20,
-                          color: Colors.indigo,),
+                          color: Colors.white,),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blueGrey,
-                          onPrimary: Colors.redAccent,
+                          primary: Colors.teal,
+                          onPrimary: Colors.white,
                           onSurface: Colors.teal,
                           elevation: 10,
                         ),
                         onPressed: (){
-                            //var total = 0;
+
+                             total = 0;
                             var num;
                             var datonum;
                             for(int i=0; i<widget.lista.length; i++)
@@ -88,7 +156,7 @@ class _ListaCompraState extends State<ListaCompra> {
                               }
                             Fluttertoast.showToast(msg: "El total de su compra es: "+total.toString(),
                             fontSize:20,
-                              backgroundColor: Colors.red,
+                              backgroundColor: Colors.blue  ,
                             );
                             //print(total);
 
@@ -101,25 +169,25 @@ class _ListaCompraState extends State<ListaCompra> {
 
             ),
             Container(
-              padding: EdgeInsets.all(20),
-              color: Color.fromARGB(40, 0, 50, 255),
+              padding: EdgeInsets.all(10),
+              color: Color.fromARGB(10, 0, 50, 55),
               //margin: EdgeInsets.only(bottom: 80),
               alignment: Alignment.center,
               child: ElevatedButton.icon(
                 label: Text('Registra Compra',
                   textAlign: TextAlign.center,),
-                icon: Icon(Icons.eighteen_mp_outlined,
+                icon: Icon(Icons.ad_units,
                   size: 20,
-                  color: Colors.indigo,),
+                  color: Colors.white,),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blueGrey,
-                  onPrimary: Colors.redAccent,
+                  primary: Colors.teal,
+                  onPrimary: Colors.white,
                   onSurface: Colors.teal,
                   elevation: 10,
                 ),
                 onPressed: (){
                   List listaregistrar = [];
-                  //totaL=0;
+                  total=0;
                   var datonum=0;
                   for(int i=0; i<widget.lista.length;i++)
                     {
@@ -136,8 +204,10 @@ class _ListaCompraState extends State<ListaCompra> {
                     {
                       "Producto":listaregistrar,
                       "Total":total,
+                      "Informacion": "Entrega del pedido : "+Info.toString()
                     }
                   );
+               //   print ("información:" +SingingCharacter.values.toString());
                   Fluttertoast.showToast(msg: 'Su compra fue registrada',
                       fontSize: 20,
                   backgroundColor: Colors.redAccent,
@@ -147,9 +217,20 @@ class _ListaCompraState extends State<ListaCompra> {
                 },
 
               ),
-            )
+            ),
+
+
+
+
+
+
+
           ],
         )
     );
   }
 }
+
+
+enum SingingCharacter { Domicilio,Recoger }
+

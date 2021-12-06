@@ -58,32 +58,32 @@ class _MenuClienteState extends State<MenuCliente> {
                     ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(10),
+               // Container(
+          //   padding: EdgeInsets.all(10),
 
-                  child: ElevatedButton(
-                    style:TextButton.styleFrom(
-                        primary: Colors.blue,
-                        fixedSize: const Size(160,60),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)
-                        )
-                    ),
-                    onPressed: (){
+          //      child: ElevatedButton(
+            //        style:TextButton.styleFrom(
+            //          primary: Colors.blue,
+            //          fixedSize: const Size(160,60),
+            //          shape: RoundedRectangleBorder(
+          //              borderRadius: BorderRadius.circular(20)
+          //            )
+          //        ),
+               //        onPressed: (){
 
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context)=>RegistrarCliente())
-                      );
+               //     Navigator.push(
+               //         context,
+    //         MaterialPageRoute(builder: (context)=>RegistrarCliente())
+    //                );
 
-                    },
-                    child:Text('Registrar',style: TextStyle(
-                        fontSize: 16,
-                        color:Colors.white),
+          //              },
+//                    child:Text('Registrar',style: TextStyle(
+                      //            fontSize: 16,
+          //                      color:Colors.white),
 
-                    ),
-                  ),
-                ),
+          //        ),
+          //      ),
+                //    ),
 
                 Container(
                   padding: EdgeInsets.all(10),
