@@ -6,6 +6,9 @@
    <application
         android:label="fluejer3"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyD3lLaTeQMh2-SoeXAs2YMg_uAOQo55JiE"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

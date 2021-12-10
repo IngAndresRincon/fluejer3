@@ -102,7 +102,7 @@ class BuscarData extends StatelessWidget {
                         'Celular: '+data['celular_negocio']),
                     trailing: Icon(Icons.delete),
                     onTap: (){
-                      clsNegocio neg = new clsNegocio(data['categoria'],data["direccion_negocio"],data["telefono_negocio"],data["codigo"],data['celular_negocio'],data['imagen'],data['nombre_negocio'],data['web']);
+                      clsNegocio neg = new clsNegocio(data['categoria'],data["direccion_negocio"],data["telefono_negocio"],data["codigo"],data['celular_negocio'],data['imagen'],data['nombre_negocio'],data['web'],data["latitud"],data["longitud"]);
                       Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context)=>DetalleNegocio(clsnegocio:neg)

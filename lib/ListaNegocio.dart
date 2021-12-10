@@ -90,7 +90,7 @@ class _ConsultaState extends State<Consulta> {
                         'Código: ' +data['codigo'].toString()),
                     trailing: Icon(Icons.delete),
                     onTap: (){
-                      clsNegocio neg = new clsNegocio(data['categoria'],data["direccion_negocio"],data["telefono_negocio"],data["codigo"],data['celular_negocio'],data['imagen'],data['nombre_negocio'],data['web']);
+                      clsNegocio neg = new clsNegocio(data['categoria'],data["direccion_negocio"],data["telefono_negocio"],data["codigo"],data['celular_negocio'],data['imagen'],data['nombre_negocio'],data['web'],data["latitud"],data["longitud"]);
                       Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context)=>DetalleNegocio(clsnegocio:neg)
@@ -121,7 +121,9 @@ class clsNegocio1
   String Imagen="";
   String Nombre="";
   String Web="";
+  String Latitud="";
+  String Longitud="";
 
   clsNegocio1(this.Categoria, this.Direccion, this.Telefono, this.Codigo,
-      this.Celular, this.Imagen, this.Nombre, this.Web);
+      this.Celular, this.Imagen, this.Nombre, this.Web, this.Latitud,this.Longitud);
 }

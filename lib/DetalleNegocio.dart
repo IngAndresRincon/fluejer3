@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'ListaCliente.dart';
+import 'geolocalizacion.dart';
 
 class DetalleNegocio extends StatefulWidget {
   final clsNegocio clsnegocio;
@@ -61,7 +62,8 @@ class _DetalleNegocioState extends State<DetalleNegocio> {
                     alignment: Alignment.center,
                     child: ElevatedButton.icon(
                       label: Text('Direccionar página web',textAlign: TextAlign.center,),
-                      icon: Icon(Icons.add_business), onPressed: ()async {
+                      icon: Icon(Icons.add_business),
+                      onPressed: ()async {
 
                       if(await canLaunch(widget.clsnegocio.Web))
                       {
@@ -71,6 +73,34 @@ class _DetalleNegocioState extends State<DetalleNegocio> {
                     },
 
                     ),
+
+
+                  ),
+
+
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    alignment: Alignment.center,
+                    child: ElevatedButton.icon(
+                      label: Text('Direccionar Ubicación',textAlign: TextAlign.center,),
+                      icon: Icon(Icons.map),
+                      onPressed: ()async {
+                        var lat = double.parse(widget.clsnegocio.Latitud);
+                        var lon = double.parse(widget.clsnegocio.Longitud);
+                        print ('Lat:'+lat.toString()+'Lon:'+lon.toString());
+                        Direccion tempdir = new Direccion(lat,lon);
+                        Navigator.push(
+                          context,
+
+                          MaterialPageRoute(builder: (context)=>geolocalizacion(dir:tempdir)),
+                        );
+
+
+                      },
+
+                    ),
+
+
                   )
                 ],
               ),
@@ -83,4 +113,12 @@ class _DetalleNegocioState extends State<DetalleNegocio> {
 
     );
   }
+}
+
+class Direccion
+{
+  double latitud;
+  double longitud;
+
+  Direccion(this.latitud, this.longitud);
 }

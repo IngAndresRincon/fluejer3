@@ -59,32 +59,36 @@ class _TipoBusquedaProductoState extends State<TipoBusquedaProducto> {
                     ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(10),
+              //  Container(
+          //    padding: EdgeInsets.all(10),
 
-                  child: ElevatedButton(
-                    style:TextButton.styleFrom(
-                        primary: Colors.blue,
-                        fixedSize: const Size(160,60),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)
-                        )
-                    ),
-                    onPressed: (){
+          //      child: ElevatedButton(
+            //        style:TextButton.styleFrom(
+            //          primary: Colors.blue,
+            //          fixedSize: const Size(160,60),
+            //          shape: RoundedRectangleBorder(
+          //              borderRadius: BorderRadius.circular(20)
+          //            )
+          //        ),
+              //        onPressed: (){
+//
+    //                    Navigator.push(
+    //                    context,
+    //                    MaterialPageRoute(builder: (context)=>Comprar())
+    //                );
+//
+          //                  },
+            //        child:Text('Buscar Por Negocio',style: TextStyle(
+            //          fontSize: 12,
+          //          color:Colors.white),
+//
+          //                  ),
+          //      ),
+                //    ),
 
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context)=>Comprar())
-                      );
 
-                    },
-                    child:Text('Buscar Por Negocio',style: TextStyle(
-                        fontSize: 12,
-                        color:Colors.white),
 
-                    ),
-                  ),
-                ),
+
                 Container(
                   padding: EdgeInsets.all(10),
 

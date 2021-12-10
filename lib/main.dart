@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fluejer3/CategoriaNegocio.dart';
 import 'package:fluejer3/ListaNegocio.dart';
 import 'package:fluejer3/ListaProducto.dart';
 import 'package:fluejer3/RegistrarProducto.dart';
+import 'package:fluejer3/geolocalizacion.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,13 +39,20 @@ class Pantalla extends StatefulWidget {
 }
 
 class _PantallaState extends State<Pantalla> {
+
   final usuario=TextEditingController();
   final password = TextEditingController();
+
   String usu='';
   String pwd='';
 
   @override
   Widget build(BuildContext context) {
+    final Stream<QuerySnapshot>consulta = FirebaseFirestore.instance.collection('Clientes').where('Nombre',isEqualTo:usuario.text).snapshots();
+
+    var sRef = FirebaseFirestore.instance.collection('Clientes').where('Nombre',isEqualTo:usuario.text).snapshots();
+
+
     return Scaffold(
       backgroundColor: Colors.white,
         appBar: AppBar(
@@ -100,6 +109,7 @@ class _PantallaState extends State<Pantalla> {
 
             ),
             Container(
+
                 padding: EdgeInsets.all(5),
                 alignment: Alignment.center,
                 child: ElevatedButton(
@@ -111,6 +121,7 @@ class _PantallaState extends State<Pantalla> {
                       )
                     ),
                   onPressed: () {
+
                       usu=usuario.text;
                       pwd=password.text;
                       if(usu== 'Andres' && pwd == '1234'){
@@ -129,30 +140,30 @@ class _PantallaState extends State<Pantalla> {
                 ),
                 )
             ),
-            Container(
-              padding: EdgeInsets.all(20),
-              alignment: Alignment.center,
-              child: ElevatedButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.red
-                ),
-                child:Text('Mensaje',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-                  onPressed: (){
-                  print ('ahgg HPPPP');
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context)=>Mensaje()),
-                    );
+          //  Container(
+    //    padding: EdgeInsets.all(20),
+    //         alignment: Alignment.center,
+    //         child: ElevatedButton(
+    //           style: TextButton.styleFrom(
+    //             primary: Colors.red
+    //           ),
+    //           child:Text('Mensaje',
+    //             style: TextStyle(
+    //               fontSize: 16,
+    //               color: Colors.white,
+    //             ),
+    //           ),
+    //             onPressed: (){
 
-                  },
-              )
+                   // Navigator.push(
+                    //     context,
+                    //    MaterialPageRoute(builder: (context)=>geolocalizacion()),
+                    // );
 
-            )
+    //            },
+    //         )
+
+            // )
 
 
 

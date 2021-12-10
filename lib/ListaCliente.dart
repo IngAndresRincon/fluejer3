@@ -99,6 +99,7 @@ class clsCliente
   String Telefono="";
   String Web="";
 
+
   clsCliente(this.Celular,this.Direccion,this.Imagen,this.Nombre,this.Telefono,this.Web);
 
 }

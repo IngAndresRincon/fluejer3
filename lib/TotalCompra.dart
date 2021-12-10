@@ -22,7 +22,7 @@ class ListaCompra extends StatefulWidget {
 }
 
 class _ListaCompraState extends State<ListaCompra> {
-  SingingCharacter? _character = SingingCharacter.Domicilio;
+  SingingCharacter? _character = SingingCharacter.Si;
   //final Informacion=TextEditingController();
   String Info="";
   var total = 0;
@@ -66,18 +66,39 @@ class _ListaCompraState extends State<ListaCompra> {
                 )
             ),
             Container(
+
+
+
               child:  Row(
                 children: <Widget>[
+
                   Container(
                     color: Colors.white,
                     height:60,
-                    width: 180,
+                    width: 120,
                     child: Column(
                       children: [
                         ListTile(
-                          title: const Text('Recoger'),
+                          title: const Text('¿Recoger a Domicilio?'),
+
+                        ),
+                      ],
+                    ),
+                  ),
+
+
+
+
+                 Container(
+                    color: Colors.white,
+                    height:60,
+                    width: 120,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: const Text('Si'),
                           leading: Radio<SingingCharacter>(
-                            value: SingingCharacter.Recoger,
+                            value: SingingCharacter.Si,
                             groupValue: _character,
                             onChanged: (SingingCharacter? value) {
                               setState(() {
@@ -95,13 +116,13 @@ class _ListaCompraState extends State<ListaCompra> {
                   Container(
                     color:Colors.white,
                         height: 60,
-                    width: 180,
+                    width: 120,
                     child: Column(
                       children: [
                         ListTile(
-                          title: const Text('Domicilio'),
+                          title: const Text('No'),
                           leading: Radio<SingingCharacter>(
-                            value: SingingCharacter.Domicilio,
+                            value: SingingCharacter.No,
                             groupValue: _character,
                             onChanged: (SingingCharacter? value) {
                               setState(() {
@@ -204,7 +225,7 @@ class _ListaCompraState extends State<ListaCompra> {
                     {
                       "Producto":listaregistrar,
                       "Total":total,
-                      "Informacion": "Entrega del pedido : "+Info.toString()
+                      "Domicilio": Info.toString()
                     }
                   );
                //   print ("información:" +SingingCharacter.values.toString());
@@ -232,5 +253,5 @@ class _ListaCompraState extends State<ListaCompra> {
 }
 
 
-enum SingingCharacter { Domicilio,Recoger }
+enum SingingCharacter { Si,No }
 
